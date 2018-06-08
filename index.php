@@ -1,0 +1,2 @@
+<?php
+// Protect folder content
