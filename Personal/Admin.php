@@ -30,12 +30,15 @@ class Admin {
 	 */
 	public function __construct() {
 
-	    new Settings();
+		new Settings();
 
 		self::$options = get_option( 'personal_options', Personal::default_options() );
 
 		add_action( 'admin_menu', array( __CLASS__, 'admin_menu' ) );
 
+		if ( self::$options['clear-admin'] == 1 ) {
+			add_action( 'admin_menu', array( __CLASS__, 'hide_menus' ), 999 );
+		}
 	} // END __construct()
 
 	/**
@@ -45,21 +48,22 @@ class Admin {
 	public static function admin_menu() {
 
 		add_menu_page(
-			__( 'Personal', 'personal' ),
+			__( 'Dashboard', 'personal' ),
 			__( 'Personal', 'personal' ),
 			'manage_options', // @todo eval
 			'personal',
-			array( __CLASS__, 'page_main' ),
-			'dashicons-layout'//, 3.5
+			array( '\WPStore\Personal\Dashboard', 'return_page' ),
+			'dashicons-layout',
+			1.1
 		);
 
 		add_submenu_page(
 			'personal',
-			__( 'Personal', 'personal' ),
-			__( 'Main', 'personal' ),
+			__( 'Dashboard', 'personal' ),
+			__( 'Dashboard', 'personal' ),
 			'manage_options', // @todo eval
 			'personal',
-			array( __CLASS__, 'page_main' )
+			array( '\WPStore\Personal\Dashboard', 'return_page' )
 		);
 
 		do_action( 'personal_menu' );
@@ -77,18 +81,18 @@ class Admin {
 		<?php
 	}
 
-	/**
-	 * @since 1.0.0
-	 */
-	public static function page_main() {
-		?>
-        <div class="wrap">
-            <h1><?php _e( 'Personal', 'personal' ); ?></h1>
-        </div><!-- wrap -->
-		<?php
+	public static function hide_menus() {
+		remove_menu_page( 'index.php' );                  //Dashboard
+		remove_menu_page( 'edit.php' );                   //Posts
+		remove_menu_page( 'edit.php?post_type=page' );    //Pages
+		remove_menu_page( 'upload.php' );                 //Media
+		remove_menu_page( 'edit-comments.php' );          //Comments
+		remove_menu_page( 'themes.php' );                 //Appearance
+		remove_menu_page( 'plugins.php' );                //Plugins
+		remove_menu_page( 'users.php' );                  //Users
+		remove_menu_page( 'tools.php' );                  //Tools
+		remove_menu_page( 'options-general.php' );        //Settings
 	}
-
-
 
 
 } // END class Admin

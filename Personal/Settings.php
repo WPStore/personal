@@ -55,27 +55,22 @@ class Settings {
 
 		$id = isset( $_REQUEST['id'] ) ? intval( $_REQUEST['id'] ) : 0;
 		?>
-		<div class="wrap">
-			<h1><?php _e( 'Personal Settings', 'personal' ); ?></h1>
-			<!--            <p class="personal-settings-actions"><a href="#">Visit</a> | <a href="#">Dashboard</a></p>-->
+        <div class="wrap">
+            <h1><?php _e( 'Personal Settings', 'personal' ); ?></h1>
+            <!--            <p class="personal-settings-actions"><a href="#">Visit</a> | <a href="#">Dashboard</a></p>-->
 			<?php self::settings_tabs( $parent_slug, $tabs ); ?>
 
-			<form method="post" action="<?php echo $parent_slug; ?>?action=update">
-                <?php settings_fields( 'personal-settings' ); ?>
-				<table class="form-table">
-
-
+            <form method="post" action="<?php echo $parent_slug; ?>?action=update">
+				<?php settings_fields( 'personal-settings' ); ?>
+                <table class="form-table">
 					<?php
-
 					do_settings_sections( 'personal-' . $current_tab );
-
 					do_settings_fields( 'personal-' . $current_tab, '' );
-
 					?>
-				</table>
+                </table>
 				<?php submit_button(); ?>
-			</form>
-		</div><!-- wrap -->
+            </form>
+        </div><!-- wrap -->
 		<?php
 	} // END page_settings()
 
@@ -243,7 +238,7 @@ class Settings {
 				'id'          => 'clear-admin',
 				'title'       => esc_html__( 'Clear Admin', 'personal' ),
 				'label'       => __( 'Remove all menu items', 'personal' ),
-				'description' => esc_html__( 'If checked all standard WordPress menu items will be removed.', 'personal' ),
+				'description' => __( 'If checked all standard WordPress menu items will be removed.', 'personal' ) . " <a href='" . admin_url( 'plugins.php' ) . "'>" . __( 'Plugins' ) . "</a>",
 			)
 		);
 
@@ -261,7 +256,7 @@ class Settings {
 
 	public static function show_description() {
 		?>
-		SOME DESCR
+        SOME DESCR
 		<?php
 	}
 
@@ -271,14 +266,14 @@ class Settings {
 	 * @since 1.0.0
 	 */
 	public static function on_off( $args ) { ?>
-		<fieldset>
-			<legend class="screen-reader-text"><span><?php echo $args['title']; ?></span></legend>
-			<label for="<?php echo $args['id']; ?>">
-				<input name="<?php echo $args['id']; ?>" type="checkbox" id="<?php echo $args['id']; ?>" value="1">
+        <fieldset>
+            <legend class="screen-reader-text"><span><?php echo $args['title']; ?></span></legend>
+            <label for="<?php echo $args['id']; ?>">
+                <input name="<?php echo $args['id']; ?>" type="checkbox" id="<?php echo $args['id']; ?>" value="1">
 				<?php echo $args['label']; ?>
-			</label>
-			<p class="description"><?php echo $args['description']; ?></p>
-		</fieldset>
+            </label>
+            <p class="description"><?php echo $args['description']; ?></p>
+        </fieldset>
 		<?php
 	}
 
