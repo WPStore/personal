@@ -115,7 +115,7 @@ final class Personal {
 
 		$base = $this->path . '/';
 
-		if ( !class_exists('\\WPUtils\\Autoloader') ) {
+		if ( ! class_exists( '\\WPUtils\\Autoloader' ) ) {
 			require_once( $base . 'utils/wp-autoloader.php' );
 		}
 
@@ -126,7 +126,7 @@ final class Personal {
 		$loader->register();
 
 		// register the base directories for the namespace prefix
-		$loader->addNamespace('WPStore\Personal', $base . '/Personal');
+		$loader->addNamespace( 'WPStore\Personal', $base . '/Personal' );
 
 	} // END autoloader()
 

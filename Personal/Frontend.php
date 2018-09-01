@@ -44,7 +44,7 @@ class Frontend {
 	 */
 	public static function is_not_admin() {
 
-		if ( !is_admin() && !in_array( $_SERVER['PHP_SELF'], array( '/wp-login.php', '/wp-register.php' ) ) ) {
+		if ( ! is_admin() && ! in_array( $_SERVER[ 'PHP_SELF' ], array( '/wp-login.php', '/wp-register.php' ) ) ) {
 			return true;
 		}
 		return false;
