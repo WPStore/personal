@@ -17,6 +17,7 @@ class Info {
 	public function __construct() {
 		add_filter( 'personal_settings_tabs', array( __CLASS__, 'add_tab' ) );
 		add_action( 'personal_menu', array( __CLASS__, 'add_settings' ) );
+
 	}
 
 	public static function add_tab( $tabs ) {
@@ -85,6 +86,7 @@ class Info {
 		?>
 		SOME DESCR
 		<?php
+
 	}
 
 

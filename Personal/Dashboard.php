@@ -20,19 +20,15 @@ class Dashboard {
 
 	public static function return_page() {
 		?>
-
 		<div class="wrap">
 			<h1><?php _e( 'Dashboard', 'personal' ); ?></h1>
-
-
-
 			<div id="dashboard-widgets-wrap">
 				<?php self::dashboard(); ?>
 			</div><!-- dashboard-widgets-wrap -->
 
 		</div><!-- wrap -->
-
 		<?php
+
 	}
 
 	public static function dashboard() {
@@ -44,7 +40,7 @@ class Dashboard {
 		}
 
 		?>
-		<div id="dashboard-widgets" class="metabox-holder<?php echo $columns_css; ?>">
+		<div id="dashboard-widgets" class="metabox-holder<?php echo esc_attr( $columns_css ); ?>">
 			<div id="postbox-container-1" class="postbox-container">
 				<?php do_meta_boxes( $screen->id, 'normal', '' ); ?>
 			</div>
@@ -59,6 +55,7 @@ class Dashboard {
 			</div>
 		</div>
 		<?php
+
 	}
 
 	public static function add_metaboxes() {
@@ -68,6 +65,5 @@ class Dashboard {
 		);
 
 	}
-
 
 } // END class Dashboard

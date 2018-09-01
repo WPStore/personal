@@ -42,16 +42,16 @@ class Setup {
 	 */
 	public function activate() {
 
-		do_action( "personal/setup/pre-activation" );
+		do_action( 'personal/setup/pre-activation' );
 
 //		$this->register_options();
 
 		$msg_warning = '';
 		$msg_notice  = '';
 
-		if ( $this->warnings ) {
+		if ( ! empty( $this->warnings ) ) {
 			$msg_warning = '<h1>' . __( 'Plugin Activation Error', 'personal' ) . '</h1>';
-			$msg_warning .= '<h3>' . __( "Personal", 'personal' ) . '</h3><ul>';
+			$msg_warning .= '<h3>' . __( 'Personal', 'personal' ) . '</h3><ul>';
 			foreach ( $this->warnings as $warning ) {
 				$msg_warning .= "<li>$warning</li>";
 			}
@@ -75,7 +75,7 @@ class Setup {
 			// display notice(s)
 		}
 
-		do_action( "personal/setup/post-activation" );
+		do_action( 'personal/setup/post-activation' );
 
 	} // END run()
 

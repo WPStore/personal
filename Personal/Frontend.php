@@ -20,6 +20,7 @@ class Frontend {
 	 */
 	public function __construct() {
 		add_action( 'init', array( __CLASS__, 'block_frontend' ) );
+
 	}
 
 	/**
@@ -30,8 +31,9 @@ class Frontend {
 
 		$options = get_option( 'personal_options' );
 
-		if ( $options['frontend-block'] == 1 && self::is_not_admin() ) {
-			wp_redirect( network_admin_url() );
+		if ( 1 === $options['frontend-block'] && self::is_not_admin() ) {
+			wp_safe_redirect( network_admin_url() );
+			exit();
 		}
 
 	}
@@ -47,7 +49,9 @@ class Frontend {
 		if ( ! is_admin() && ! in_array( $_SERVER[ 'PHP_SELF' ], array( '/wp-login.php', '/wp-register.php' ) ) ) {
 			return true;
 		}
+
 		return false;
+
 	}
 
 } // END class Frontend

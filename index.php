@@ -1,2 +1,4 @@
 <?php
-// Protect folder content
+/**
+ * Protect folder content
+ */

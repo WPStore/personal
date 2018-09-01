@@ -6,6 +6,7 @@
  * @package   WPStore\Plugins\Personal
  * @version   0.0.1
  */
+
 /**
 Plugin Name: Personal
 Plugin URI:  https://www.wpstore.io/plugin/personal
@@ -38,13 +39,16 @@ Domain Path: /languages
 
 namespace WPStore;
 
-// Exit if accessed directly
+/**
+ * Exit if accessed directly
+ */
 if ( ! defined( 'ABSPATH' ) ) {
 	exit( 'No direct access! This plugin requires WordPress to be loaded.' );
 }
 
 /**
  * Class Personal
+ *
  * @package WPStore
  */
 final class Personal {
@@ -91,6 +95,7 @@ final class Personal {
 		}
 
 		return self::$single_instance;
+
 	}
 
 	/**
