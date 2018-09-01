@@ -33,12 +33,12 @@ class Frontend {
 
 		if ( 1 === $options['frontend-block'] && self::is_not_admin() ) {
 			wp_safe_redirect( network_admin_url() );
-			exit();
 		}
 
 	}
 
 	/**
+	 * Check for wp-admin or login/register pages
 	 *
 	 * @since 1.0.0
 	 *

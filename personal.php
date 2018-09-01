@@ -146,7 +146,7 @@ final class Personal {
 		add_action( 'plugins_loaded', array( __CLASS__, 'load_textdomain' ) );
 
 		if ( ! is_admin() ) {
-			// Frontend
+			/** Frontend */
 			new Personal\Frontend();
 		} // END if
 
@@ -251,11 +251,14 @@ final class Personal {
 	 */
 	public static function deactivation( $network_wide ) {
 
-//		if ( true == $network_wide ) {
-//			return;
-//		} else {
-//			flush_rewrite_rules();
-//		}
+		/** @todo deactivation procedure */
+		/**
+		if ( true == $network_wide ) {
+			return;
+		} else {
+			flush_rewrite_rules();
+		}
+		 */
 
 	} // END deactivation()
 

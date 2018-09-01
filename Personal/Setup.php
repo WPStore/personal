@@ -42,20 +42,20 @@ class Setup {
 	 */
 	public function activate() {
 
-		do_action( 'personal/setup/pre-activation' );
+		do_action( 'personal_setup_pre_activation' );
 
-//		$this->register_options();
+		// @todo $this->register_options();
 
 		$msg_warning = '';
 		$msg_notice  = '';
 
 		if ( ! empty( $this->warnings ) ) {
-			$msg_warning = '<h1>' . __( 'Plugin Activation Error', 'personal' ) . '</h1>';
+			$msg_warning  = '<h1>' . __( 'Plugin Activation Error', 'personal' ) . '</h1>';
 			$msg_warning .= '<h3>' . __( 'Personal', 'personal' ) . '</h3><ul>';
 			foreach ( $this->warnings as $warning ) {
 				$msg_warning .= "<li>$warning</li>";
 			}
-			$msg_warning .= "</ul>";
+			$msg_warning .= '</ul>';
 		}
 
 		if ( $this->notices ) {
@@ -65,17 +65,17 @@ class Setup {
 		}
 
 		if ( '' !== $msg_warning ) {
-			// show warnings
-			// abort activation
+			// @todo show warnings
+			// @todo abort activation
 			wp_die( $msg_warning, __( 'Plugin Activation Error', 'personal' ) );
 		}
 
 		if ( '' !== $msg_notice ) {
-			// save notice(s) to db (transient?)
-			// display notice(s)
+			// @todo save notice(s) to db (transient?)
+			// @todo display notice(s)
 		}
 
-		do_action( 'personal/setup/post-activation' );
+		do_action( 'personal_setup_post_activation' );
 
 	} // END run()
 
