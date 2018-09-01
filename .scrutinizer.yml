@@ -143,3 +143,4 @@ filter:
     - vendor/
     dependency_paths:
     - wordpress/
+    - utils/
